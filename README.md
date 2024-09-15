@@ -70,6 +70,8 @@ Creates a new game with a grid of specified dimensions.
 **Response:**
 - `200 OK`: Returns the initial game state.
 - `400 Bad Request`: Invalid or missing width/height.
+- `405 Method Not Allowed`: Invalid method.
+- `500 Internal Server Error`: Internal server error.
 
 **Example Request:**
 ```bash
@@ -89,10 +91,12 @@ Validates a sequence of snake moves and updates the game state.
 ```
 
 **Response:**
-- `200 OK`: Valid move sequence, returns updated game state.
+- `200 OK`: Valid move sequence leading to fruit, returns updated game state and new fruit position.
 - `400 Bad Request`: Invalid request body.
-- `404 Bad Request`: Invalid request body.
+- `404 Not Found`: Fruit not found.
+- `405 Method Not Allowed`: Invalid method.
 - `418 I'm a teapot`: Invalid move (e.g., snake goes out of bounds, 180-degree turn, etc.).
+- `500 Internal Server Error`: Internal server error.
 
 **Example Request:**
 ```bash
