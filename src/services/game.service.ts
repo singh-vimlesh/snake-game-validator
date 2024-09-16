@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { randomNumber } from '../utils/randomNumber';
 import { Fruit, Snake, State, Tick } from '../types/game.types';
-import { FruitNotFoundError, GameOverError } from '../errors/game.errors';
+import { FruitNotFoundError, GameOverError } from '../errors/gameErrors';
 
 export const startNewGame = (width: number, height: number) => {
   return {

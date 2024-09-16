@@ -1,9 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import { z } from 'zod';
-import { GameError } from '../errors/game.errors';
+import { GameError } from '../errors/gameErrors';
 import { formatZodError } from '../utils/formatZodError';
 
-export const errorHandler = (err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+export const errorHandler = (
+  err: Error | GameError | z.ZodError,
+  _req: Request,
+  res: Response,
+  _next: NextFunction
+) => {
   if (err instanceof z.ZodError) {
     return res.status(400).json({ errors: formatZodError(err) });
   }
