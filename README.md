@@ -21,18 +21,21 @@ A stateless API for validating moves in a Snake game. The server handles game lo
 ## Installation
 
 1. Clone the repository:
+
     ```bash
     git clone https://github.com/singh-vimlesh/snake-game-validator.git
     cd snake-game-validator
     ```
 
 2. Install dependencies:
+
     ```bash
     yarn install
     ```
 
 3. Set up environment variables:
    Create a `.env` file in the root directory and add any necessary environment variables (see `.env.example`):
+
     ```bash
     # Example
     PORT=3000
@@ -41,6 +44,7 @@ A stateless API for validating moves in a Snake game. The server handles game lo
 ## Usage
 
 1. Start the development server:
+
     ```bash
     yarn dev
     ```
@@ -48,11 +52,13 @@ A stateless API for validating moves in a Snake game. The server handles game lo
 2. The API will run at `http://localhost:3000`.
 
 3. To format code:
+
     ```bash
     yarn format
     ```
 
 4. To lint the project:
+
     ```bash
     yarn lint
     ```
@@ -64,16 +70,19 @@ A stateless API for validating moves in a Snake game. The server handles game lo
 Creates a new game with a grid of specified dimensions.
 
 **Query Parameters:**
+
 - `w` (number, required): Width of the game board.
 - `h` (number, required): Height of the game board.
 
 **Response:**
+
 - `200 OK`: Returns the initial game state.
 - `400 Bad Request`: Invalid or missing width/height.
 - `405 Method Not Allowed`: Invalid method.
 - `500 Internal Server Error`: Internal server error.
 
 **Example Request:**
+
 ```bash
 GET /new?w=10&h=10
 ```
@@ -83,6 +92,7 @@ GET /new?w=10&h=10
 Validates a sequence of snake moves and updates the game state.
 
 **Request Body:**
+
 ```json
 {
   "state": { /* Current game state */ },
@@ -91,6 +101,7 @@ Validates a sequence of snake moves and updates the game state.
 ```
 
 **Response:**
+
 - `200 OK`: Valid move sequence leading to fruit, returns updated game state and new fruit position.
 - `400 Bad Request`: Invalid request body.
 - `404 Not Found`: Fruit not found.
@@ -99,6 +110,7 @@ Validates a sequence of snake moves and updates the game state.
 - `500 Internal Server Error`: Internal server error.
 
 **Example Request:**
+
 ```bash
 POST /validate
 {
@@ -152,11 +164,13 @@ yarn test -- --watch  # To watch files and re-run tests on changes
 Ensure code quality using ESLint and Prettier:
 
 - **Lint:** Check for code issues:
+
     ```bash
     yarn lint
     ```
 
 - **Format:** Automatically format code:
+
     ```bash
     yarn format
     ```
@@ -164,4 +178,3 @@ Ensure code quality using ESLint and Prettier:
 ## License
 
 This project is licensed under the MIT License.
-
